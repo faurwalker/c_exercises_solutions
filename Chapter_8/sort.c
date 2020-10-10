@@ -16,7 +16,7 @@ int main(){
 
 void sort ( int arr[], int num ){
 	for( int i = 0; i < num; i++){
-		for(int j = i; j < num; j++){
+		for(int j = i + 1; j < num; j++){
 			if(arr[i] > arr[j] && i != j){
 				int local = arr[j];
 				arr[j] = arr[i];
