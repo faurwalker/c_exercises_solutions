@@ -2,12 +2,18 @@
 #include <stdio.h>
 
 long int NumberToConvert;
-int base;
+int base, NumberConverted[64], digit = 0;
+const char baseDigits[16] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+
 
 int main(){
 	void getNumberAndBase(void);
+	void convertNumber(void);
+	void displayConvertedNumber(void);
+
 	getNumberAndBase();
-	printf("%li %d",NumberToConvert, base);
+	convertNumber();
+	displayConvertedNumber();
 
 	return 0;
 }
@@ -25,6 +31,20 @@ void getNumberAndBase(void){
 		
 }
 
-void convertNumber(){}
+void convertNumber(void){
+	while(NumberToConvert != 0){
+		int num = NumberToConvert % base;
+		NumberConverted[digit] = baseDigits[num];
+		digit++;
+		NumberToConvert /= base; 
+	}	
+}
 
-void displayConvertedNumber(){}
+
+void displayConvertedNumber(void){
+	printf("Converted number = ");
+	for(int i = digit; i >= 0; i--){
+		printf("%c", NumberConverted[i]);
+	} 
+	printf("\n");
+}
